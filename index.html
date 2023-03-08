@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova</title>
+</head>
+<body>
+    <div id="secao">
+        <div id="form">
+            <h1>Salário</h1>
+            <span>Salário:</span>
+            <input type="text" name="" id="inp_salario" placeholder="Digite seu salário"><br>
+            <span>Adicional mensal: </span>
+            <input type="text" name="" id="inp_adMensal" placeholder="Digite o adicional mensal"><br>
+            <span>Bônus do usuário</span>
+            <input type="text" name="" id="inp_bonusUsu" placeholder="Digite o bônus mensal"><br>
+            <button onclick="funSalario()">Analisar Minha Renda</button>
+            <div id="msg">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function funSalario() {
+        var salario = Number(inp_salario.value);
+        var mensal = Number(inp_adMensal.value);
+        var bonus = Number(inp_bonusUsu.value);
+        var salarioBruto = salario +mensal + bonus;
+        console.log(salarioBruto);
+        if (salarioBruto =>  10000) {
+            var ir = salarioBruto*0.125;
+            console.log(`Valor do Imposto de Renda (IR) é: ${ir}`);
+           var inss = (salarioBruto - ir )* 0.1;
+           console.log (`Valor do INSS é :${inss}`);
+           var fgts = (salarioBruto-ir)* 0.08;
+           console.log(`Valor do FGTS é: ${fgts}`);
+           var salarioLiquido = salarioBruto - ir -inss- fgts;
+           console.log(`Salário Liquido é: ${salarioLiquido}`);
+            console.log(salarioBruto * 0.125);
+            //console.log(`o valor do imposto é: ${salarioBruto}`);
+           msg.innerHTML = `Com o salário de R$: ${salario}, com o adicional de R$: ${mensal} e o bônus de R$: ${bonus}, você tem:<br> 
+                            O valor do seu salário bruto é: R$: ${salarioBruto} <br>
+                            O valor do Imposto de Renda (IR) é: R$: ${ir} <br>
+                            O Valor do INSS é: R$: ${inss}<br>
+                            O valor do FGTS é: R$ ${fgts}<br>
+                            O valor do salário liquido é: R$ ${salarioLiquido} <br>
+                            <br>
+                            ` ;
+        }
+        if (salarioBruto < 9999) {
+            var inss = salarioBruto * 0.1;
+           console.log (`Valor do INSS é :${inss}`);
+           var fgts = salarioBruto* 0.08;
+           console.log(`Valor do FGTS é: ${fgts}`);
+           var salarioLiquido = salarioBruto -inss- fgts;
+           var vaquinha = salarioLiquido* 0.15;
+           var vaquinhaAno = vaquinha * 12;
+           console.log(`Salário Liquido é: ${salarioLiquido}`);
+            //console.log(`o valor do imposto é: ${salarioBruto}`);
+           msg.innerHTML = `Com o salário de R$: ${salario}, com o adicional de R$: ${mensal} e o bônus de R$: ${bonus}, você tem:<br> 
+           
+           O valor do seu salário bruto é: R$: ${salarioBruto} <br>
+           O valor do Imposto de Renda (IR) é: R$: 0 <br>
+           O Valor do INSS é: R$: ${inss}<br>
+           O valor do FGTS é: R$ ${fgts}<br>
+           O valor do salário liquido é: R$ ${salarioLiquido} <br>
+           Com a renda de R$: ${salarioLiquido}, é recomendado poupar  R$: ${vaquinha} para que em um ano tenha poupado R$: ${vaquinhaAno}<br>
+           `;
+        }
+        if (salarioBruto <= 2500) {
+            var inss = salarioBruto * 0.1;
+               console.log (`Valor do INSS é :${inss}`);
+               var fgts = salarioBruto* 0.08;
+               console.log(`Valor do FGTS é: ${fgts}`);
+               var salarioLiquido = salarioBruto -inss- fgts;
+               console.log(`Salário Liquido é: ${salarioLiquido}`);
+                console.log(salarioBruto * 0.125);
+                //console.log(`o valor do imposto é: ${salarioBruto}`);
+               msg.innerHTML = `Com o salário de R$: ${salario}, com o adicional de R$: ${mensal} e o bônus de R$: ${bonus}, você tem:<br> 
+                                O valor do seu salário bruto é: R$: ${salarioBruto} <br>
+                                O valor do Imposto de Renda (IR) é: R$: 0 <br>
+                                O Valor do INSS é: R$: ${inss}<br>
+                                O valor do FGTS é: R$ ${fgts}<br>
+                                O valor do salário liquido é: R$ ${salarioLiquido} <br>
+                                <br>
+                                ` ;
+    
+        }
+    }
+</script>
